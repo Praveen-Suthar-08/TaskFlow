@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
 name: Deploy TaskFlow to GitHub Pages
 
 on:
@@ -7,6 +14,14 @@ on:
 
 permissions:
   contents: read
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  pages: write
+  id-token: write
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
 
 concurrency:
   group: pages
@@ -18,10 +33,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
       - name: Install dependencies
         run: npm install
       - name: Type check
@@ -34,10 +60,29 @@ jobs:
         run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
+<<<<<<< HEAD
+=======
+=======
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v4
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
         with:
           path: ./dist
 
   deploy:
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -46,6 +91,16 @@ jobs:
     permissions:
       pages: write
       id-token: write
+<<<<<<< HEAD
+=======
+=======
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
+>>>>>>> 55539cc720a40dfeb29c4aa822faa4170c2522ab
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
