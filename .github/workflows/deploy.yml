@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
 name: Deploy TaskFlow to GitHub Pages
 
 on:
@@ -7,6 +11,11 @@ on:
 
 permissions:
   contents: read
+<<<<<<< HEAD
+=======
+  pages: write
+  id-token: write
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
 
 concurrency:
   group: pages
@@ -18,10 +27,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+<<<<<<< HEAD
+=======
+
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+<<<<<<< HEAD
       - name: Install dependencies
         run: npm install
       - name: Type check
@@ -34,10 +48,23 @@ jobs:
         run: npm run build
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
+=======
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v4
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
         with:
           path: ./dist
 
   deploy:
+<<<<<<< HEAD
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -46,6 +73,13 @@ jobs:
     permissions:
       pages: write
       id-token: write
+=======
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+>>>>>>> 01f94f495e53b94267d77c95826f83881ba7e1ba
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
